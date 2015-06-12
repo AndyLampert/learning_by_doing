@@ -4,16 +4,24 @@ class CashRegister
 
 	def initialize
 		@total_owed = 0
+		@change = 0
 	end 
 
-	# purchase 
 	def purchase(amount_owned)
-		@total_owed = @total_owed + amount_owned - pay(10)
+		@total_owed = @total_owed + amount_owned 
 		total
 	end
 
-	def pay(cost)
-		return cost 
+	def pay(amount_paid)
+
+		if amount_paid > @total_owed
+			@change = amount_paid - @total_owed
+			puts "Your change is #{@change}"
+		else
+			puts "Your new total is #{@total_owed}"
+		end
+
+		return @change 
 	end
 
 	def total
@@ -22,4 +30,9 @@ class CashRegister
 
 end
 
-puts CashRegister.new.purchase(50)
+cash_register = CashRegister.new
+
+purchase_amount = cash_register.purchase(10)
+paid_amound = cash_register.pay(50)
+
+puts purchase_amount paid_amound
