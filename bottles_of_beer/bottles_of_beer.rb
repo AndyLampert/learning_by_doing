@@ -12,11 +12,14 @@ bottle_count = 99
 
 
 def count_bottles(number)
-  puts "#{number} bottles of beer on the wall, "
-  puts "#{number} bottles of beer."
-  puts "Take one down and pass it around "
-  puts "#{number - 1} bottles of beer on the wall."
-  bottle_count -= 1
+  if number == 0
+    puts 'No more bottles of beer on the wall, no more bottles of beer.
+Go to the store and buy some more, 99 bottles of beer on the wall.'
+    return
+  end
+  puts "#{number} bottles of beer on the wall, #{number} bottles of beer."
+  puts "Take one down and pass it around, #{number - 1} bottles of beer on the wall."
+  count_bottles(number - 1)
 end
 
-count_bottles(99)
+count_bottles(5)
